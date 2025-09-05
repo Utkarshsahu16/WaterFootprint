@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Footprint Analysis</title>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/analysis.css') }}">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt=""></a>
+    <div class="heading">
+        <h1>Water Footprint Analysis</h1>
+    </div>  
+    </header>
+    <div id="main">
+        <h1>Model for Analysis</h1>
+    <div id="container" style="width: 100%; height: 70vh" ></div>
+</div>
+
+<script>
+ anychart.onDocumentReady(function() {
+var data = [
+{x: "blue water", value: 1622},
+{x: "green water", value: 680},
+{x: "grey water", value: 450},
+{x: "available", value: 6800},
+{x: "indirect", value: 400},
+];
+
+// create the chart
+var chart = anychart.pie();
+
+// add the data
+chart.data(data);
+
+// display the chart in the container
+chart.container('container');
+chart.draw();
+
+chart.legend().position("bottom");
+// set items layout
+chart.legend().itemsLayout("horizontal");
+
+});
+</script>
+
+</body>
+</html>
